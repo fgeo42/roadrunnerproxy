@@ -1,14 +1,11 @@
 import os
-from proxy.common.flag import Flags
-from proxy.core.entrypoint import start
+import sys
+from proxy import main
 
-# Get the dynamic port from Heroku
-port = int(os.environ.get("PORT", 8899))
+# Set the dynamic port from Heroku's environment
+port = os.environ.get("PORT", "8899")
 
-flags = Flags(
-    port=port,
-    hostname='0.0.0.0',
-    num_workers=1,
-)
+# Simulate running from CLI: pass args to proxy.main
+sys.argv = ["proxy.py", "--hostname", "0.0.0.0", "--port", port]
 
-start(flags)
+main()
