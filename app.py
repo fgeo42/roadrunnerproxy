@@ -4,8 +4,9 @@ import os
 
 app = Flask(__name__)
 
-# Set this to your proxy app URL (another Heroku app)
-PROXY_URL = "http://road-runner-proxy-be-7216c3dea3c7.herokuapp.com/"
+# ScraperAPI URL and your API key
+SCRAPER_API_URL = "https://api.scraperapi.com/"
+SCRAPER_API_KEY = "48ca6046ca5a586225533ce421ccfd39"  # Replace with your actual API key
 
 @app.route("/")
 def home():
@@ -24,18 +25,18 @@ def browse():
         return "Please provide a ?url=...", 400
 
     try:
-        print(f"Fetching: {target_url} via proxy {PROXY_URL}")
+        # Prepare the payload for ScraperAPI
+        payload = {
+            'api_key': SCRAPER_API_KEY,
+            'url': target_url
+        }
 
-        resp = requests.get(
-            target_url,
-            proxies={
-                "http": PROXY_URL,
-                "https": PROXY_URL
-            },
-            verify=False,
-            timeout=10
-        )
+        print(f"Fetching: {target_url} via ScraperAPI")
 
+        # Make a request to ScraperAPI to fetch the URL
+        resp = requests.get(SCRAPER_API_URL, params=payload, timeout=10)
+
+        # Return the response from ScraperAPI to the user
         return Response(
             resp.content,
             status=resp.status_code,
