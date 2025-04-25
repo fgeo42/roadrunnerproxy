@@ -32,7 +32,7 @@ def browse():
                 "http": PROXY_URL,
                 "https": PROXY_URL
             },
-            verify=false,
+            verify=False,
             timeout=10
         )
 
