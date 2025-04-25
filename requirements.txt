@@ -1,1 +1,3 @@
 proxy.py
+Flask
+requests
