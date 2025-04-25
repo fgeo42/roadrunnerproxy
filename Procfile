@@ -1,1 +1,1 @@
-web: python run_proxy.py
+web: python app.py
