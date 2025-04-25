@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # Set this to your proxy app URL (another Heroku app)
-PROXY_URL = "https://road-runner-proxy-be-7216c3dea3c7.herokuapp.com/"
+PROXY_URL = "http://road-runner-proxy-be-7216c3dea3c7.herokuapp.com/"
 
 @app.route("/")
 def home():
