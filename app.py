@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Your proxy address (hosted on Heroku)
-PROXY_URL = "http://road-runner-proxy-7b827ac3574d.herokuapp.com:80"
+PROXY_URL = "https://road-runner-proxy-be-7216c3dea3c7.herokuapp.com:80"
 
 @app.route("/browse")
 def browse():
